@@ -1,0 +1,19 @@
+<div class="flex flex-col h-screen bg-gray-100">
+  <!-- Header -->
+  <header class="h-14 bg-gray-900 text-white flex items-center px-6 shadow">
+    <h1 class="text-lg font-semibold">Renderer</h1>
+  </header>
+
+  <!-- Content -->
+  <main class="flex-1">
+<div class="relative w-full h-full">
+  <app-canvas-box
+    [colour]="selectedColour()"
+    class="absolute inset-0 block w-full h-full" />
+  <app-menu
+    [colours]="colours"
+    (selectedColour)="setSelectedColour($event)"
+    class="absolute top-4 left-4 z-20" />
+</div>
+  </main>
+</div>

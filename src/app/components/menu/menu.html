@@ -1,0 +1,19 @@
+<div class="border border-white min-w-64 min-h-32 rounded text-white p-4">
+    <form>
+        <table>
+            <tr>
+                <span>Colours:</span><br>
+                <div class="flex flex-row gap-1">
+                    @for (colour of colours(); track $index) {
+                        <span (click)="selectColor(colour)" class="hover:cursor-pointer">
+                            {{colour}}
+                        </span>
+                    }
+                </div>
+            </tr>
+            <tr>
+                <span>Models:</span>
+            </tr>
+        </table>
+    </form>
+</div>
