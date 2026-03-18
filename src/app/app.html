@@ -6,14 +6,17 @@
 
   <!-- Content -->
   <main class="flex-1">
-<div class="relative w-full h-full">
-  <app-canvas-box
-    [colour]="selectedColour()"
-    class="absolute inset-0 block w-full h-full" />
-  <app-menu
-    [colours]="colours"
-    (selectedColour)="setSelectedColour($event)"
-    class="absolute top-4 left-4 z-20" />
-</div>
+    <div class="relative w-full h-full">
+      <app-canvas-box
+        [colour]="selectedColour()"
+        [model]="selectedModel()"
+        class="absolute inset-0 block w-full h-full" />
+      <app-menu
+        [colours]="colours"
+        [models]="models"
+        (selectedColour)="setSelectedColour($event)"
+        (selectedModel)="setSelectedModel($event)"
+        class="absolute top-4 left-4 z-20" />
+    </div>
   </main>
 </div>

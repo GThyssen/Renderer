@@ -1,19 +1,54 @@
-<div class="border border-white min-w-64 min-h-32 rounded text-white p-4">
-    <form>
-        <table>
-            <tr>
-                <span>Colours:</span><br>
-                <div class="flex flex-row gap-1">
-                    @for (colour of colours(); track $index) {
-                        <span (click)="selectColor(colour)" class="hover:cursor-pointer">
-                            {{colour}}
-                        </span>
-                    }
-                </div>
-            </tr>
-            <tr>
-                <span>Models:</span>
-            </tr>
-        </table>
+<div class="border border-white/20 text-white rounded-xl p-6 w-80 shadow-lg">
+    <form class="flex flex-col gap-6">
+
+        <!-- Colours -->
+        <div>
+            <div class="flex flex-row">
+                <ng-icon name="lucideBrush" class="w-6 h-6 text-white mt-1 mr-2"></ng-icon>
+                <p class="text-md font-semibold mb-2 text-white/80">Colours</p>
+            </div>
+            <div class="flex flex-wrap gap-2">
+                @for (colour of colours(); track $index)
+                {
+                    <button 
+                        type="button"
+                        (click)="selectColor(colour)"
+                        class="px-3 py-1 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 hover:border-white/40 transition text-sm hover:cursor-pointer">
+                        {{colour}}
+                    </button>
+                }
+            </div>
+        </div>
+
+        <!-- Models -->
+        <div>
+            <div class="flex flex-row">
+                <ng-icon name="lucideAtom" class="w-6 h-6 text-white mt-1 mr-2"></ng-icon>
+                <p class="text-md font-semibold mb-2 text-white/80">Models</p>
+            </div>
+            <div class="flex flex-wrap gap-2">
+                @for (model of models(); track $index)
+                {
+                    <button 
+                        type="button"
+                        (click)="selectModel(model)"
+                        class="px-3 py-1 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 hover:border-white/40 transition text-sm hover:cursor-pointer">
+                        {{model}}
+                    </button>
+                }
+            </div>
+        </div>
+
+        <!-- Dimensions -->
+        <div>
+            <div class="flex flex-row">
+                <ng-icon name="lucideRulerDimensionLine" class="w-6 h-6 text-white mt-1 mr-2"></ng-icon>
+                <p class="text-md font-semibold mb-2 text-white/80">Dimensions</p>
+            </div>
+            <div class="flex flex-wrap gap-2">
+
+            </div>
+        </div>
+
     </form>
 </div>

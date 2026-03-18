@@ -4,32 +4,19 @@ import * as THREE from 'three';
 @Component({
   selector: 'app-canvas-box',
   standalone: true,
-  template: `<canvas #canvas></canvas>`,
-  styles: [`
-    :host {
-      display: block;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-    }
-
-    canvas {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-  `]
+  template: `<canvas #canvas></canvas>`
 })
+
 export class CanvasBox implements OnInit, OnDestroy {
 
   @ViewChild('canvas', { static: true })
   canvasRef!: ElementRef<HTMLCanvasElement>;
 
   colour = input<string>();
+  model = input<string>();
 
   private material!: THREE.MeshToonMaterial;
-  private box!: THREE.Mesh;
-  private torus!: THREE.Mesh;
+  private renderedModel!: THREE.Mesh;
   private renderer!: THREE.WebGLRenderer;
   private camera!: THREE.PerspectiveCamera;
   private scene!: THREE.Scene;
@@ -70,6 +57,33 @@ export class CanvasBox implements OnInit, OnDestroy {
       if (!this.material) return;
 
       const col = this.colour();
+      const model = this.model();
+
+      if (this.renderedModel) {
+        this.scene.remove(this.renderedModel);
+      }
+
+      if (model === 'sphere') {
+        this.renderedModel = new THREE.Mesh(
+          new THREE.SphereGeometry(1.5, 32, 32),
+          this.material
+        );
+      }
+      else if (model === 'torus'){
+        this.renderedModel = new THREE.Mesh(
+          new THREE.TorusGeometry(5, 1.5, 16, 100),
+          this.material
+        );
+      }
+      else if (model === 'cube'){
+          this.renderedModel = new THREE.Mesh(
+          new THREE.BoxGeometry(5, 1.5, 16, 100),
+          this.material
+        );  
+      }
+      
+      this.renderedModel.position.set(0, 7.5, 0);
+      this.scene.add(this.renderedModel);
 
       if (col && col in this.colourMap) {
         this.material.color.setHex(this.colourMap[col]);
@@ -128,21 +142,6 @@ export class CanvasBox implements OnInit, OnDestroy {
 
     // Material
     this.material = new THREE.MeshToonMaterial({ color: 0xffffff });
-
-    // Objects
-    this.box = new THREE.Mesh(
-      new THREE.BoxGeometry(1.5, 1.5, 1.5),
-      this.material
-    );
-    this.box.position.set(0, 7.5, 0);
-
-    this.torus = new THREE.Mesh(
-      new THREE.TorusGeometry(5, 1.5, 16, 100),
-      this.material
-    );
-    this.torus.position.set(0, 7.5, 0);
-
-    this.scene.add(this.box, this.torus);
 
     // Enable mouse orbit + zoom
     this.initMouseControls();
@@ -244,14 +243,6 @@ export class CanvasBox implements OnInit, OnDestroy {
 
   private animate = () => {
     this.animationId = requestAnimationFrame(this.animate);
-
-    const t = performance.now() * 0.001;
-
-    this.box.rotation.x = t;
-    this.box.rotation.y = t;
-    this.torus.rotation.x = t;
-    this.torus.rotation.y = t;
-
     this.renderer.render(this.scene, this.camera);
   };
 }

@@ -1,6 +1,16 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
+import { provideIcons } from '@ng-icons/core';
+import { lucideAtom, lucideBrush, lucideHome, lucideRulerDimensionLine, lucideUser } from '@ng-icons/lucide';
 import { App } from './app/app';
 
-bootstrapApplication(App, appConfig)
-  .catch((err) => console.error(err));
+bootstrapApplication(App, {
+  providers: [
+    provideIcons({
+      lucideHome,
+      lucideAtom,
+      lucideBrush,
+      lucideRulerDimensionLine,
+      lucideUser
+    })
+  ]
+});

@@ -15,10 +15,17 @@ const COLOURS = ['red', 'blue', 'green'] as const;
 
 export class App {
 
-readonly colours = ['red', 'blue', 'green'];
-readonly selectedColour = signal('green');
+  readonly colours = ['red', 'blue', 'green'];
+  readonly models = ['cilinder', 'cube', 'sphere', 'torus'];
+
+  readonly selectedColour = signal('green');
+  readonly selectedModel = signal('torus');
 
   setSelectedColour(colour: string) {
     this.selectedColour.set(colour);
+  }
+
+  setSelectedModel(model: string) {
+    this.selectedModel.set(model);
   }
 }
