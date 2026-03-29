@@ -33,6 +33,7 @@
     "@ng-icons/lucide": "^33.1.0",
     "@ngneat/svg-icon": "^8.0.0",
     "@types/three": "^0.183.0",
+    "axios": "^1.14.0",
     "rxjs": "~7.8.0",
     "three": "^0.183.0",
     "tslib": "^2.3.0"

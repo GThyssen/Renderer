@@ -1,0 +1,33 @@
+<header class="h-14 bg-gray-900 text-white flex items-center px-6 shadow">
+  <div class="flex w-full justify-between items-center">
+    
+    <h1 class="text-lg font-semibold">Renderer</h1>
+
+    @if (userService.loggedInUser()) {
+      <div class="flex flex-row gap-2 items-center">
+        <p>{{ userService.loggedInUser()?.email }}</p>
+
+        <div class="relative group cursor-pointer w-6 h-6">
+          
+          <!-- User icon (default visible) -->
+          <ng-icon 
+            name="lucideUserCircle"
+            class="absolute inset-0 text-2xl text-white transition-opacity duration-200 group-hover:opacity-0">
+          </ng-icon>
+
+          <!-- Logout icon (hidden until hover) -->
+          <ng-icon
+            (click)="logout()" 
+            name="lucideLogOut"
+            class="absolute inset-0 text-2xl text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+          </ng-icon>
+
+        </div>
+      </div>
+    }
+    @else {
+      <ng-icon name="lucideUserCircle" class="text-2xl text-white"></ng-icon>
+    }
+    
+  </div>
+</header>

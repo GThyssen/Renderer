@@ -1,0 +1,101 @@
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-800 via-slate-900 to-gray-900">
+
+  <div class="w-full max-w-md p-8 space-y-6 rounded-2xl backdrop-blur-xl bg-white/5 shadow-2xl border border-white/10">
+
+    <!-- Title -->
+    <div class="text-center text-slate-100">
+      <h2 class="text-3xl font-semibold tracking-tight">Welcome back</h2>
+      <p class="text-sm text-slate-400">Sign in to your account</p>
+    </div>
+
+    <!-- Form -->
+    <form (ngSubmit)="onSubmit()" class="space-y-5">
+
+      <!-- Email -->
+      <div class="relative">
+        <input
+          type="email"
+          name="email"
+          [(ngModel)]="email"
+          required
+          placeholder=" "
+          class="peer w-full px-4 pt-5 pb-2 rounded-lg bg-slate-800/60 text-slate-100 placeholder-transparent border border-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
+        />
+        <label class="absolute left-4 top-2 text-sm text-slate-400 transition-all
+          peer-placeholder-shown:top-3.5
+          peer-placeholder-shown:text-base
+          peer-focus:top-2
+          peer-focus:text-sm
+          peer-focus:text-blue-400">
+          Email
+        </label>
+      </div>
+
+      <!-- Password -->
+      <div class="relative">
+        <input
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          required
+          placeholder=" "
+          class="peer w-full px-4 pt-5 pb-2 rounded-lg bg-slate-800/60 text-slate-100 placeholder-transparent border border-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
+        />
+        <label class="absolute left-4 top-2 text-sm text-slate-400 transition-all
+          peer-placeholder-shown:top-3.5
+          peer-placeholder-shown:text-base
+          peer-focus:top-2
+          peer-focus:text-sm
+          peer-focus:text-blue-400">
+          Password
+        </label>
+      </div>
+
+      <!-- Login Button -->
+      <button
+        type="submit"
+        [disabled]="loading"
+        class="w-full py-3 rounded-lg font-medium bg-blue-500 hover:bg-blue-600 active:scale-[0.99] transition-all shadow-lg shadow-blue-500/20 disabled:opacity-60 hover:cursor-pointer">
+
+        @if(!loading) {
+            <span>Sign in</span>
+        }
+        @else {
+            <span class="flex justify-center"> 
+              <span class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+            </span>
+        }
+      </button>
+      <button
+        type="submit"
+        [disabled]="loading"
+        class="w-full py-3 rounded-lg font-medium bg-blue-500 hover:bg-blue-600 active:scale-[0.99] transition-all shadow-lg shadow-blue-500/20 disabled:opacity-60 hover:cursor-pointer">
+
+        @if(!loading) {
+            <span>Register</span>
+        }
+        @else {
+            <span class="flex justify-center"> 
+              <span class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+            </span>
+        }
+      </button>
+
+      <!-- Register Button -->
+
+    </form>
+
+    <!-- Divider -->
+    <div class="flex items-center gap-3 text-slate-500 text-xs">
+      <div class="flex-1 h-px bg-slate-700"></div>
+      OR
+      <div class="flex-1 h-px bg-slate-700"></div>
+    </div>
+
+    <!-- Footer -->
+    <div class="text-center text-sm text-slate-400">
+      <a href="#" class="hover:text-blue-400 transition">Forgot password?</a>
+    </div>
+
+  </div>
+</div>
