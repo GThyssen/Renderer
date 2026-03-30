@@ -24,7 +24,12 @@ export class Header implements OnInit {
     }
   } 
 
-  async logout() {
+  logout() {
     this.router.navigate(['/login']);
   }
+
+  navigateTo(route: string) {
+    this.router.navigate([route])
+  }
+
 }

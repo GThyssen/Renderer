@@ -1,8 +1,21 @@
 <header class="h-14 bg-gray-900 text-white flex items-center px-6 shadow">
   <div class="flex w-full justify-between items-center">
-    
-    <h1 class="text-lg font-semibold">Renderer</h1>
+    <div class="flex flex-row">
+      
+      <h1 class="text-lg font-semibold mr-6">Renderer</h1>
+      <!-- Pages -->
+      <div class="flex flex-row gap-2">
+        <span>
+          <h1 (click)="navigateTo('/models')" class="text-lg font-semibold text-blue-500 hover:cursor-pointer hover:text-blue-600">Modelling</h1>
+        </span>
 
+        <span>
+          <h1 (click)="navigateTo('/placement')" class="text-lg font-semibold text-blue-500 hover:cursor-pointer hover:text-blue-600">Placement</h1>
+        </span>
+      </div>
+    </div>
+
+    <!-- LoggedInUser -->
     @if (userService.loggedInUser()) {
       <div class="flex flex-row gap-2 items-center">
         <p>{{ userService.loggedInUser()?.email }}</p>

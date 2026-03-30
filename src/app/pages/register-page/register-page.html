@@ -1,0 +1,44 @@
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-800 via-slate-900 to-gray-900">
+  <div class="w-full max-w-md p-8 space-y-6 rounded-2xl backdrop-blur-xl bg-white/5 shadow-2xl border border-white/10">
+    
+    <!-- Title -->
+    <div class="text-center text-slate-100">
+      <h2 class="text-3xl font-semibold tracking-tight">Sign up</h2>
+      <p class="text-sm text-slate-400">Create a new account or return to the login page</p>
+    </div>
+
+      <!-- Sign up Button -->
+      <button
+        type="submit"
+        [disabled]="loading"
+        class="w-full py-3 rounded-lg font-medium bg-blue-500 hover:bg-blue-600 active:scale-[0.99] transition-all shadow-lg shadow-blue-500/20 disabled:opacity-60 hover:cursor-pointer">
+
+        @if(!loading) {
+            <span>Create account</span>
+        }
+        @else {
+            <span class="flex justify-center"> 
+              <span class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+            </span>
+        }
+      </button>
+
+      <!-- To Login Button -->
+      <button
+        type="submit"
+        (click)="toLoginPage()"
+        [disabled]="loading"
+        class="w-full py-3 rounded-lg font-medium bg-blue-500 hover:bg-blue-600 active:scale-[0.99] transition-all shadow-lg shadow-blue-500/20 disabled:opacity-60 hover:cursor-pointer">
+
+        @if(!loading) {
+            <span>To login page</span>
+        }
+        @else {
+            <span class="flex justify-center"> 
+              <span class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+            </span>
+        }
+      </button>
+
+  </div>
+</div>

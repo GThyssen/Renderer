@@ -22,4 +22,8 @@ export class ModelService {
 
     }
   }
+
+  async getModelSetup() {
+    
+  }
 }
